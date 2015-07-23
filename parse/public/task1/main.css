@@ -1,0 +1,231 @@
+.header {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.content {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.avia {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.avia-fixed {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.avia-fixed .avia {
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.avia-fixed .avia__row_head {
+}
+
+.avia-fixed .table__tbody {
+  visibility: hidden;
+}
+
+.avia__row {
+  cursor: pointer;
+  position: relative;
+}
+
+.avia__row_head {
+  cursor: default;
+}
+
+.avia__row_fixed {
+  position: fixed;
+}
+
+.avia__cell {
+  border: 2px solid white;
+  padding: 3px;
+  position: relative;
+  outline: 0;
+}
+
+.avia__cell:first-child {
+  border-left: none;
+}
+
+.avia__cell:last-child {
+  border-right: none;
+}
+
+.avia__row_head .avia__cell {
+  border-top: none;
+}
+
+.table__tbody:last-child .avia__cell,
+.avia-checkbox_departure:not(:checked) ~ .avia .avia__group_arrival:last-of-type .avia__cell,
+.avia-checkbox_departure:not(:checked) ~ .avia .avia__group_arrival:last-of-type .avia__cell {
+  border-bottom: none;
+}
+
+.avia__cell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -3;
+  top: 0;
+}
+
+.avia__cell::after {
+  background: rgb(0, 197, 197);
+}
+
+.avia-checkbox_arrival:checked + .avia-checkbox_departure:checked ~ .avia .table__tbody:nth-child(odd) .avia__cell::after,
+.avia-checkbox_arrival:not(:checked) ~ .avia .avia__group_departure:nth-of-type(even) .avia__cell::after,
+.avia-checkbox_departure:not(:checked) ~ .avia .avia__group_arrival:nth-of-type(even) .avia__cell::after {
+  background: #c1e0e0;
+}
+
+.table__tbody .avia__cell:hover::after {
+  background: rgb(221, 163, 0) !important;
+  left: -10000px;
+  right: -10000px;
+  z-index: -2;
+  width: auto;
+}
+
+.avia__cell:hover::before {
+  content: "";
+  position: absolute;
+  background: rgb(221, 163, 0);
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -2;
+}
+
+.avia__row.avia__row_head .avia__cell {
+  background: rgb(150, 160, 162);
+}
+
+.avia__row.avia__row_head .avia__cell::before {
+  background: none;
+}
+
+.avia__dir {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.avia__dir_departure {
+  background-image: url('img/departure.png');
+}
+
+.avia__dir_arrival {
+  background-image: url('img/arrival.png');
+}
+
+.avia__logo .avia-logo {
+  width: 100px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.avia__logo .avia-logo_transaero {
+  background-image: url('img/transaero.png');
+}
+
+.avia__type-short {
+  display: none;
+}
+
+.avia__time-short {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .avia__company {
+    display: none;
+  }
+  .avia__type {
+    display: none;
+  }
+
+  .avia__type-short {
+    display: table-cell;
+  }
+}
+
+@media (max-width: 800px) {
+  .avia__time-short {
+    display: table-cell;
+  }
+
+  .avia__time {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .avia__status {
+    display: none;
+  }
+}
+
+.avia__checkbox {
+  display: none;
+}
+
+.avia-popup {
+  display: none;
+}
+
+.avia__checkbox:checked + .avia-popup {
+  display: block;
+}
+
+.avia-popup__wrapper {
+  width: 500px;
+  height: 300px;
+  margin-top: 100px;
+  position: relative;
+  padding: 30px;
+}
+
+.avia-popup__close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.avia__group_arrival,
+.avia__group_departure {
+  display: none;
+}
+
+.avia-checkbox_arrival:checked ~ .avia .avia__group_arrival,
+.avia-checkbox_departure:checked ~ .avia .avia__group_departure {
+  display: table-row-group;
+}
+

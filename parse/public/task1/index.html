@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Табло аэропорта</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<!--
+  1. Основной упорт делался на функциональность, не на дизайн
+  2. Шаблонизаторы, css препроцессоры не использовались для демонстрации чистоты решения
+  3. В некоторых местах структура html не оптимальна и может быть не удобна при натягивании более сложного дизайна
+  4. Примеры попапов сделаны только для первых двух строк
+-->
+  <div class="content">
+    <div class="header">
+      Онлайн табло
+    </div>
+
+    Arrival: <input type="checkbox" class="avia-checkbox avia-checkbox_arrival" checked="checked" id="arrival"/>
+    Departure: <input type="checkbox" class="avia-checkbox avia-checkbox_departure" checked="checked" id="departure"/>
+
+    <div class="table avia">
+
+
+
+      <div class="avia-fixed">
+        <div class="table avia">
+          <div class="table__row avia__row avia__row_head">
+            <div class="table__cell avia__cell"></div>
+            <div class="table__cell avia__cell">Рейс</div>
+            <div class="table__cell avia__cell avia__logo">Авиакомпания</div>
+            <div class="table__cell avia__cell">Самолет</div>
+            <div class="table__cell avia__cell">Аэропорт назначения</div>
+            <div class="table__cell avia__cell">Время по рассписанию</div>
+            <div class="table__cell avia__cell avia__status">Статус рейса</div>
+            <div class="table__cell avia__cell avia__note">Примечание</div>
+          </div>
+
+          <type1 class="table__tbody avia__group_departure">
+            <label class="table__row avia__row" for="row1">
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_departure"></div>
+              </div>
+              <div class="table__cell avia__cell avia__num">UN 572</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span>
+              </div>
+              <div class="table__cell avia__cell avia__type">Boeing 737-800</div>
+              <div class="table__cell avia__cell avia__type-short">B737</div>
+              <div class="table__cell avia__cell avia__target">Пхукет</div>
+              <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+              <div class="table__cell avia__cell avia__time-short">18:00</div>
+              <div class="table__cell avia__cell avia__status">летит</div>
+              <div class="table__cell avia__cell avia__note">примечание</div>
+            </label>
+          </type1>
+
+          <type2 class="table__tbody avia__group_arrival">
+            <label class="table__row avia__row" for="row2">
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_arrival"></div>
+              </div>
+              <div class="table__cell avia__cell avia__num">UN 572</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span>
+              </div>
+              <div class="table__cell avia__cell avia__type">Boeing 737-801</div>
+              <div class="table__cell avia__cell avia__type-short">B737</div>
+              <div class="table__cell avia__cell avia__target">Пхукет</div>
+              <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+              <div class="table__cell avia__cell avia__time-short">18:00</div>
+              <div class="table__cell avia__cell avia__status">летит</div>
+              <div class="table__cell avia__cell avia__note">примечание</div>
+            </label>
+          </type2>
+
+          <type2 class="table__tbody avia__group_arrival">
+            <label class="table__row avia__row" for="row2">
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_arrival"></div>
+              </div>
+              <div class="table__cell avia__cell avia__num">UN 572</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span>
+              </div>
+              <div class="table__cell avia__cell avia__type">Boeing 737-802</div>
+              <div class="table__cell avia__cell avia__type-short">B737</div>
+              <div class="table__cell avia__cell avia__target">Пхукет</div>
+              <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+              <div class="table__cell avia__cell avia__time-short">18:00</div>
+              <div class="table__cell avia__cell avia__status">летит</div>
+              <div class="table__cell avia__cell avia__note">примечание</div>
+            </label>
+          </type2>
+
+          <type1 class="table__tbody avia__group_departure">
+            <label class="table__row avia__row" for="row2">
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_departure"></div>
+              </div>
+              <div class="table__cell avia__cell avia__num">UN 572</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span>
+              </div>
+              <div class="table__cell avia__cell avia__type">Boeing 737-803</div>
+              <div class="table__cell avia__cell avia__type-short">B737</div>
+              <div class="table__cell avia__cell avia__target">Пхукет</div>
+              <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+              <div class="table__cell avia__cell avia__time-short">18:00</div>
+              <div class="table__cell avia__cell avia__status">летит</div>
+              <div class="table__cell avia__cell avia__note">примечание</div>
+            </label>
+          </type1>
+        </div>
+      </div>
+
+
+      <div class="table__row avia__row avia__row_head">
+        <div class="table__cell avia__cell"></div>
+        <div class="table__cell avia__cell">Рейс</div>
+        <div class="table__cell avia__cell avia__logo">Авиакомпания</div>
+        <div class="table__cell avia__cell">Самолет</div>
+        <div class="table__cell avia__cell">Аэропорт назначения</div>
+        <div class="table__cell avia__cell">Время по рассписанию</div>
+        <div class="table__cell avia__cell avia__status">Статус рейса</div>
+        <div class="table__cell avia__cell avia__note">Примечание</div>
+      </div>
+
+      <type1 class="table__tbody avia__group_departure">
+        <label class="table__row avia__row" for="row1">
+          <div class="table__cell avia__cell">
+            <div class="avia__dir avia__dir_departure"></div>
+          </div>
+          <div class="table__cell avia__cell avia__num">UN 572</div>
+          <div class="table__cell avia__cell avia__logo">
+            <span class="avia__company">Трансаэро</span>
+            <span class="avia-logo avia-logo_transaero"></span>
+          </div>
+          <div class="table__cell avia__cell avia__type">Boeing 737-800</div>
+          <div class="table__cell avia__cell avia__type-short">B737</div>
+          <div class="table__cell avia__cell avia__target">Пхукет</div>
+          <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+          <div class="table__cell avia__cell avia__time-short">18:00</div>
+          <div class="table__cell avia__cell avia__status">летит</div>
+          <div class="table__cell avia__cell avia__note">примечание</div>
+        </label>
+      </type1>
+
+      <type2 class="table__tbody avia__group_arrival">
+        <label class="table__row avia__row" for="row2">
+          <div class="table__cell avia__cell">
+            <div class="avia__dir avia__dir_arrival"></div>
+          </div>
+          <div class="table__cell avia__cell avia__num">UN 572</div>
+          <div class="table__cell avia__cell avia__logo">
+            <span class="avia__company">Трансаэро</span>
+            <span class="avia-logo avia-logo_transaero"></span>
+          </div>
+          <div class="table__cell avia__cell avia__type">Boeing 737-801</div>
+          <div class="table__cell avia__cell avia__type-short">B737</div>
+          <div class="table__cell avia__cell avia__target">Пхукет</div>
+          <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+          <div class="table__cell avia__cell avia__time-short">18:00</div>
+          <div class="table__cell avia__cell avia__status">летит</div>
+          <div class="table__cell avia__cell avia__note">примечание</div>
+        </label>
+      </type2>
+
+      <type2 class="table__tbody avia__group_arrival">
+        <label class="table__row avia__row" for="row2">
+          <div class="table__cell avia__cell">
+            <div class="avia__dir avia__dir_arrival"></div>
+          </div>
+          <div class="table__cell avia__cell avia__num">UN 572</div>
+          <div class="table__cell avia__cell avia__logo">
+            <span class="avia__company">Трансаэро</span>
+            <span class="avia-logo avia-logo_transaero"></span>
+          </div>
+          <div class="table__cell avia__cell avia__type">Boeing 737-802</div>
+          <div class="table__cell avia__cell avia__type-short">B737</div>
+          <div class="table__cell avia__cell avia__target">Пхукет</div>
+          <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+          <div class="table__cell avia__cell avia__time-short">18:00</div>
+          <div class="table__cell avia__cell avia__status">летит</div>
+          <div class="table__cell avia__cell avia__note">примечание</div>
+        </label>
+      </type2>
+
+      <type1 class="table__tbody avia__group_departure">
+        <label class="table__row avia__row" for="row2">
+          <div class="table__cell avia__cell">
+            <div class="avia__dir avia__dir_departure"></div>
+          </div>
+          <div class="table__cell avia__cell avia__num">UN 572</div>
+          <div class="table__cell avia__cell avia__logo">
+            <span class="avia__company">Трансаэро</span>
+            <span class="avia-logo avia-logo_transaero"></span>
+          </div>
+          <div class="table__cell avia__cell avia__type">Boeing 737-803</div>
+          <div class="table__cell avia__cell avia__type-short">B737</div>
+          <div class="table__cell avia__cell avia__target">Пхукет</div>
+          <div class="table__cell avia__cell avia__time">18:00 22.07.2015</div>
+          <div class="table__cell avia__cell avia__time-short">18:00</div>
+          <div class="table__cell avia__cell avia__status">летит</div>
+          <div class="table__cell avia__cell avia__note">примечание</div>
+        </label>
+      </type1>
+    </div>
+  </div>
+
+  <div class="popups">
+    <input type="checkbox" id="row1" class="avia__checkbox" />
+    <div class="popup avia-popup">
+      <div class="popup__wrapper avia-popup__wrapper">
+        <label for="row1">
+          <div class="avia-popup__close">X</div>
+        </label>
+
+        <div class="table avia avia_popup">
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell"></div>
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_departure"></div></div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Рейс</div>
+              <div class="table__cell avia__cell">UN 572</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell ">Авиакомпания</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span></div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Самолет</div>
+              <div class="table__cell avia__cell">Boeing 737-800</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Аэропорт назначения</div>
+              <div class="table__cell avia__cell">Пхукет</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Время по рассписанию</div>
+              <div class="table__cell avia__cell">8:00 22.07.2015</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Статус рейса</div>
+              <div class="table__cell avia__cell">летит</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Примечание</div>
+              <div class="table__cell avia__cell">примечание</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input type="checkbox" id="row2" class="avia__checkbox" />
+    <div class="popup avia-popup">
+      <div class="popup__wrapper avia-popup__wrapper">
+        <label for="row2">
+          <div class="avia-popup__close">X</div>
+        </label>
+
+        <div class="table avia avia_popup">
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell"></div>
+              <div class="table__cell avia__cell">
+                <div class="avia__dir avia__dir_arrival"></div></div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Рейс</div>
+              <div class="table__cell avia__cell">UN 572</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell ">Авиакомпания</div>
+              <div class="table__cell avia__cell avia__logo">
+                <span class="avia__company">Трансаэро</span>
+                <span class="avia-logo avia-logo_transaero"></span></div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Самолет</div>
+              <div class="table__cell avia__cell">Boeing 737-800</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Аэропорт назначения</div>
+              <div class="table__cell avia__cell">Пхукет</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Время по рассписанию</div>
+              <div class="table__cell avia__cell">8:00 22.07.2015</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Статус рейса</div>
+              <div class="table__cell avia__cell">летит</div>
+            </div>
+          </div>
+          <div class="table__tbody">
+            <div class="table__row avia__row">
+              <div class="table__cell avia__cell">Примечание</div>
+              <div class="table__cell avia__cell">примечание</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
