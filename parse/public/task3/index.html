@@ -4,9 +4,24 @@
   <meta charset="utf-8">
   <title>Задание 3</title>
 
+  <link rel="stylesheet" href="main.css">
+  <script src="vendors/jquery-2.1.4.min.js"></script>
+
   <script src="main.js"></script>
+  <script src="upload.js"></script>
 </head>
 <body>
-  <audio controls id="audio" src="music.mp3"></audio>
+  <label class="upload" for="file">
+    Нажмите, чтобы загрузить файл
+    <input type="file" id="file" class="upload__input" accept="audio/*"/>
+  </label>
+  <audio controls class="audio"></audio>
+  <div class="dropzone">
+    <div class="dropzone__wrapper">
+      <div class="dropzone__text">
+        Перетащите аудиофайл сюда
+      </div>
+    </div>
+  </div>
 </body>
 </html>
