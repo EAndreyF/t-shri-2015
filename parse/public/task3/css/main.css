@@ -1,0 +1,125 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.upload {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+}
+
+.upload__input {
+  display: none
+}
+
+.dropzone {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .3);
+  padding: 20px;
+}
+
+.dropzone__wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 40px;
+  color: grey;
+  border: 4px dashed grey;
+}
+
+.dropzone__text {
+  top: 50%;
+  position: relative;
+  margin-top: -60px;
+}
+
+.audio {
+  margin: 5px;
+}
+
+.spectrum {
+  width: 500px;
+  height: 300px;
+}
+
+.eq {
+  width: 400px;
+  height: 300px;
+  padding: 10px;
+}
+
+.eq-text {
+  height: 20px;
+  width: 340px;
+  margin-left: 60px;
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.eq-text__val {
+  position: absolute;
+  top: 0;
+  width: 55px;
+}
+
+.eq-text__val_left {
+  left: 0;
+}
+
+.eq-text__val_middle {
+  left: 50%;
+  margin-left: -10px;
+}
+
+.eq-text__val_right {
+  right: 0;
+}
+
+.eq-block {
+  display: inline-block;
+  height: 30px;
+}
+
+.eq-block__range {
+  width: 300px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.eq-block__value {
+  display: inline-block;
+  width: 60px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.eq-blocks {
+  position: relative;
+}
+
+.eq-blocks::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 70px;
+  right: 42px;
+  bottom: 5px;
+  background-image: repeating-linear-gradient(90deg,rgb(0,0,0),transparent 2px, transparent 47px);
+  z-index: -1;
+}

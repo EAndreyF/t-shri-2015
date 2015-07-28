@@ -4,18 +4,26 @@
   <meta charset="utf-8">
   <title>Задание 3</title>
 
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="vendors/jquery-2.1.4.min.js"></script>
 
-  <script src="main.js"></script>
-  <script src="upload.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/spectrum.js"></script>
+  <script src="js/eq.js"></script>
+  <script src="js/audio.js"></script>
 </head>
 <body>
+
   <label class="upload" for="file">
     Нажмите, чтобы загрузить файл
     <input type="file" id="file" class="upload__input" accept="audio/*"/>
   </label>
-  <audio controls class="audio"></audio>
+
+  <div class="audio">
+    <audio controls class="audio__element"></audio>
+    <div class="audio__name"></div>
+  </div>
+
   <div class="dropzone">
     <div class="dropzone__wrapper">
       <div class="dropzone__text">
@@ -23,5 +31,71 @@
       </div>
     </div>
   </div>
+
+  <div class="visual">
+    <canvas class="spectrum"></canvas>
+  </div>
+
+  <div class="eq">
+    <select class="eq-type">
+      <option value="0">Пользовательский</option>
+      <option value="classic">Classic</option>
+      <option value="jazz">Jazz</option>
+      <option value="pop">Pop</option>
+      <option value="rock">Rock</option>
+    </select>
+    <button class="eq-reset">
+      Сбросить
+    </button>
+    <div class="eq-text">
+      <div class="eq-text__val eq-text__val_left">-12 дБ</div>
+      <div class="eq-text__val eq-text__val_middle">0 дБ</div>
+      <div class="eq-text__val eq-text__val_right">+12 дБ</div>
+    </div>
+    <div class="eq-blocks">
+      <div class="eq-blocks__line"></div>
+      <div class="eq-block">
+        <div class="eq-block__value">32 Гц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="32"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">64 Гц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="64"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">125 Гц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="125"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">250 Гц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="250"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">500 Гц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="500"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">1 кГц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="1000"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">2 кГц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="2000"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">4 кГц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="4000"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">8 кГц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="8000"/>
+      </div>
+      <div class="eq-block">
+        <div class="eq-block__value">16 кГц</div>
+        <input type="range" class="eq-block__range" min="-12" max="12" data-value="16000"/>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
