@@ -19,6 +19,8 @@ var Audio = {
       $audio_name: $('.audio__name'),
       $audio_start: $('.audio__start'),
       $audio_stop: $('.audio__stop'),
+      $audio_title: $('.audio__title'),
+      $audio_artist: $('.audio__artist'),
       $spectrum: $('.spectrum'),
       $eq: $('.eq')
     };
@@ -98,11 +100,18 @@ var Audio = {
       this.source = this.audioContext.createBufferSource();
       this.source.connect(this.connector);
       this.source.buffer = this.buffer;
-      _this.viz.spectrum.start();
+      this.viz.spectrum.start();
       this.source.start(0);
       this.source.onended = function() {
         _this.viz.spectrum.stop();
-      }
+      };
+      parse_audio_metadata(this.file, function(meta) {
+        Audio.els.$audio_title.text(meta.title || '');
+        Audio.els.$audio_artist.text(meta.artist || '');
+        console.log(arguments);
+      }, function() {
+        console.log(arguments);
+      })
     }
   },
 
@@ -121,6 +130,7 @@ var Audio = {
       var fileResult = e.target.result;
       ctx.decodeAudioData(fileResult, function(buffer) {
         _this.buffer = buffer;
+        _this.file = file;
         _this.start();
       }, function(e) {
         console.error('Fail to decode file', e);
@@ -130,13 +140,6 @@ var Audio = {
       console.error('Fail to read file', e);
     };
     fr.readAsArrayBuffer(file);
-
-
-
-//    var url = URL.createObjectURL(file);
-//    var aa = Audio.els.$audio[0];
-//    aa.src = url;
-//    aa.play();
 
     Audio.els.$audio_name.text(file.name);
 

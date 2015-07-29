@@ -30,12 +30,13 @@ $(function() {
   };
 
   Visualizer.prototype.start = function() {
-    this.stopped = false;
+    this.stopped = false; // Окончание остановки, все капы опустились до нулевого значения
+    this.stopping = false; // Начало остановки
     requestAnimationFrame(this.drawMeter);
   };
 
   Visualizer.prototype.stop = function() {
-    this.stopped = true;
+    this.stopping = true;
   };
 
   Visualizer.prototype._drawSpectrum = function(analyser) {
@@ -60,6 +61,7 @@ $(function() {
     var array = new Uint8Array(analyser.frequencyBinCount);
 
     var drawMeter = function () {
+      console.log('viz');
       var i, j, valueCf;
       analyser.getByteFrequencyData(array);
 
@@ -97,10 +99,17 @@ $(function() {
       } else {
         ctx.clearRect(0, 0, cwidth, cheight);
         valueCf = (cheight - capHeight) / _this.maxDb;
+        var flag = 0;
         for (i = 0; i < _this.recNum; i++) {
           capYPositionArray[i] = Math.max(0, capYPositionArray[i] - 1);
+          if (capYPositionArray[i]) {
+            flag = 1;
+          }
           ctx.fillStyle = capStyle;
           ctx.fillRect(i * (recWidth + recDif), cheight - valueCf * capYPositionArray[i] - capHeight, recWidth, capHeight);
+        }
+        if (!flag && _this.stopping) {
+          _this.stopped = true;
         }
       }
       !_this.stopped && requestAnimationFrame(drawMeter);
