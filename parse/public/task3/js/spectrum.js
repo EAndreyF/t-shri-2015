@@ -23,10 +23,19 @@ $(function() {
     this.setDefault();
   };
 
-  Visualizer.prototype.start = function() {
+  Visualizer.prototype.load = function() {
     var analyser = this.ctx.createAnalyser();
     this._drawSpectrum(analyser);
     return analyser;
+  };
+
+  Visualizer.prototype.start = function() {
+    this.stopped = false;
+    requestAnimationFrame(this.drawMeter);
+  };
+
+  Visualizer.prototype.stop = function() {
+    this.stopped = true;
   };
 
   Visualizer.prototype._drawSpectrum = function(analyser) {
@@ -94,8 +103,8 @@ $(function() {
           ctx.fillRect(i * (recWidth + recDif), cheight - valueCf * capYPositionArray[i] - capHeight, recWidth, capHeight);
         }
       }
-      requestAnimationFrame(drawMeter);
+      !_this.stopped && requestAnimationFrame(drawMeter);
     };
-    requestAnimationFrame(drawMeter);
+    this.drawMeter = drawMeter;
   };
 });

@@ -15,8 +15,10 @@ var Audio = {
       $input: $('.upload__input'),
       $body: $('body'),
       $dragzone: $('.dropzone'),
-      $audio: $('.audio__element'),
+//      $audio: $('.audio__element'),
       $audio_name: $('.audio__name'),
+      $audio_start: $('.audio__start'),
+      $audio_stop: $('.audio__stop'),
       $spectrum: $('.spectrum'),
       $eq: $('.eq')
     };
@@ -27,17 +29,14 @@ var Audio = {
     window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame;
     try {
       this.audioContext = new AudioContext();
-      this.source = this.audioContext.createMediaElementSource(Audio.els.$audio[0]);
 
       var eq = Equalizer.get(this.audioContext, Audio.els.$eq);
 
       Audio.viz.spectrum = Spectrum.get(this.audioContext, Audio.els.$spectrum[0]);
-      var analyzer = Audio.viz.spectrum.start();
-
-      this.source.connect(eq[0]); // Сначала подключаем фильтры, потом подключаем визуализатор, потом выходной
+      var analyzer = Audio.viz.spectrum.load();
+      this.connector = eq[0]; // Сначала подключаем фильтры, потом подключаем визуализатор, потом выходной
       eq[1].connect(analyzer);
       analyzer.connect(this.audioContext.destination);
-
     } catch (e) {
       this.noContext = true;
       console.error(e);
@@ -50,6 +49,9 @@ var Audio = {
     body.on('dragleave', Audio.dragleave);
     body.on('dragover', Audio.dragover);
     body.on('drop', Audio.drop);
+
+    Audio.els.$audio_start.click(this.start.bind(this));
+    Audio.els.$audio_stop.click(this.stop.bind(this));
   },
 
   viz: {
@@ -89,11 +91,52 @@ var Audio = {
     Audio.changeFile(file);
   },
 
+  start: function() {
+    var _this = this;
+    if (this.buffer) {
+      this.stop();
+      this.source = this.audioContext.createBufferSource();
+      this.source.connect(this.connector);
+      this.source.buffer = this.buffer;
+      _this.viz.spectrum.start();
+      this.source.start(0);
+      this.source.onended = function() {
+        _this.viz.spectrum.stop();
+      }
+    }
+  },
+
+  stop: function() {
+    if (this.source) {
+      this.source.stop(0);
+      delete this.source;
+    }
+  },
+
   changeFile: function(file) {
-    var url = URL.createObjectURL(file);
-    var aa = Audio.els.$audio[0];
-    aa.src = url;
-    aa.play();
+    var _this = this;
+    var fr = new FileReader();
+    var ctx = this.audioContext;
+    fr.onload = function(e) {
+      var fileResult = e.target.result;
+      ctx.decodeAudioData(fileResult, function(buffer) {
+        _this.buffer = buffer;
+        _this.start();
+      }, function(e) {
+        console.error('Fail to decode file', e);
+      });
+    };
+    fr.onerror = function(e) {
+      console.error('Fail to read file', e);
+    };
+    fr.readAsArrayBuffer(file);
+
+
+
+//    var url = URL.createObjectURL(file);
+//    var aa = Audio.els.$audio[0];
+//    aa.src = url;
+//    aa.play();
 
     Audio.els.$audio_name.text(file.name);
 
