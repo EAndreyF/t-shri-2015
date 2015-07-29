@@ -10,18 +10,38 @@
 }
 
 .avia {
+  margin: 20px auto 30px;
+  display: inline-block;
+  position: relative;
+}
+
+.avia .table {
+  overflow: hidden;
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
-  overflow: hidden;
+}
+
+.avia__main {
+  margin-top: -30px;
 }
 
 .avia-fixed {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   pointer-events: none;
   z-index: 10;
+  height: 0;
+  margin-bottom: 30px;
+}
+
+.avia-fixed_unsupported {
+  position: fixed;
+}
+
+.avia-fixed_unsupported + .avia__main {
+  margin-top: 0;
 }
 
 .avia-fixed .avia {
@@ -32,7 +52,12 @@
   margin-top: 0;
 }
 
-.avia-fixed .avia__row_head {
+.avia-fixed .table {
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  box-shadow: none;
+  padding-left: 1px;
 }
 
 .avia-fixed .table__tbody {
@@ -92,8 +117,11 @@
 }
 
 .avia-checkbox_arrival:checked + .avia-checkbox_departure:checked ~ .avia .table__tbody:nth-child(odd) .avia__cell::after,
+.avia-checkbox_arrival:checked + .avia-checkbox_departure:checked ~ .popups .avia .table__tbody:nth-child(odd) .avia__cell::after,
 .avia-checkbox_arrival:not(:checked) ~ .avia .avia__group_departure:nth-of-type(even) .avia__cell::after,
-.avia-checkbox_departure:not(:checked) ~ .avia .avia__group_arrival:nth-of-type(even) .avia__cell::after {
+.avia-checkbox_arrival:not(:checked) ~ .popups .avia .avia__group_departure:nth-of-type(even) .avia__cell::after,
+.avia-checkbox_departure:not(:checked) ~ .avia .avia__group_arrival:nth-of-type(even) .avia__cell::after,
+.avia-checkbox_departure:not(:checked) ~ .popups .avia .avia__group_arrival:nth-of-type(even) .avia__cell::after {
   background: #c1e0e0;
 }
 
@@ -197,18 +225,31 @@
 
 .avia-popup {
   display: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .avia__checkbox:checked + .avia-popup {
   display: block;
 }
 
+.avia-popup .avia {
+  margin: 0 auto;
+  height: 100%;
+  overflow: auto;
+}
+
+.avia-popup .avia__row:first-child .avia__cell {
+  border-top: none;
+}
+
 .avia-popup__wrapper {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
   width: 500px;
-  height: 300px;
-  margin-top: 100px;
+  max-height: 320px;
   position: relative;
-  padding: 30px;
 }
 
 .avia-popup__close {
