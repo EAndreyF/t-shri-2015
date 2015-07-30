@@ -6,7 +6,7 @@ window.onload = function() {
       if (document.body.scrollTop > offsetTop) {
         el.classList.add('avia-fixed_unsupported');
       } else {
-        el.classList.remove('avia-fixed_unsupported')
+        el.classList.remove('avia-fixed_unsupported');
       }
     });
   }

@@ -28,6 +28,7 @@ html, body {
   bottom: 0;
   background: rgba(0, 0, 0, .3);
   padding: 20px;
+  z-index: 1;
 }
 
 .dropzone__wrapper {
@@ -64,7 +65,7 @@ html, body {
 .eq-text {
   height: 20px;
   width: 340px;
-  margin-left: 60px;
+  margin-left: 50px;
   position: relative;
   display: inline-block;
   margin-top: 10px;
@@ -114,12 +115,12 @@ html, body {
 }
 
 .eq-blocks::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 70px;
-  right: 42px;
-  bottom: 5px;
-  background-image: repeating-linear-gradient(90deg,rgb(0,0,0),transparent 2px, transparent 47px);
-  z-index: -1;
+  /*content: '';*/
+  /*position: absolute;*/
+  /*top: 5px;*/
+  /*left: 70px;*/
+  /*right: 42px;*/
+  /*bottom: 5px;*/
+  /*background-image: repeating-linear-gradient(90deg,rgb(0,0,0),transparent 2px, transparent 47px);*/
+  /*z-index: -1;*/
 }

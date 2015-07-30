@@ -15,7 +15,6 @@ var Audio = {
       $input: $('.upload__input'),
       $body: $('body'),
       $dragzone: $('.dropzone'),
-//      $audio: $('.audio__element'),
       $audio_name: $('.audio__name'),
       $audio_start: $('.audio__start'),
       $audio_stop: $('.audio__stop'),
@@ -25,7 +24,7 @@ var Audio = {
       $eq: $('.eq')
     };
 
-    //fix browser vender for AudioContext and requestAnimationFrame
+    //fix for AudioContext and requestAnimationFrame
     window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
     window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame;
     window.cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.msCancelAnimationFrame;

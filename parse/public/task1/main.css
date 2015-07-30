@@ -1,3 +1,42 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.table {
+  display: table;
+}
+
+.table__row {
+  display: table-row;
+}
+
+.table__cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table__tbody {
+  display: table-row-group;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.popup__wrapper {
+  background: white;
+  z-index: -100;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
 .header {
   text-align: center;
   font-size: 40px;
