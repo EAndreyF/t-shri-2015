@@ -76,11 +76,13 @@ $(function() {
 
   EQ.prototype.addListeners = function() {
     var _this = this;
+    var select = $('.eq-type');
     var reset = function() {
       for(var key in _this.frequenciesHash) {
         _this.frequenciesHash[key].filter.gain.value = 0;
         _this.frequenciesHash[key].el.value = 0;
       }
+      select.val(0);
     };
 
     var applyPreset = function(preset) {
@@ -101,10 +103,11 @@ $(function() {
         var hz = +el.dataset.value;
         var val = el.value;
         _this.frequenciesHash[hz].filter.gain.value = val;
+        select.val(0);
       });
     }
 
-    $('.eq-type').on('change', function(e) {
+    select.on('change', function(e) {
       var val = e.target.value;
       if (val === '0') {
         reset();

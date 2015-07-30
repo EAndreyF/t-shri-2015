@@ -108,9 +108,9 @@ var Audio = {
       parse_audio_metadata(this.file, function(meta) {
         Audio.els.$audio_title.text(meta.title || '');
         Audio.els.$audio_artist.text(meta.artist || '');
-        console.log(arguments);
+//        console.log(arguments);
       }, function() {
-        console.log(arguments);
+        console.info(arguments);
       })
     }
   },

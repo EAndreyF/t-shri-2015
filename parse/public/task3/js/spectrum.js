@@ -61,7 +61,7 @@ $(function() {
     var array = new Uint8Array(analyser.frequencyBinCount);
 
     var drawMeter = function () {
-      console.log('viz');
+//      console.log('viz');
       var i, j, valueCf;
       analyser.getByteFrequencyData(array);
 
