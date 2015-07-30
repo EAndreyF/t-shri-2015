@@ -8,6 +8,7 @@ $(function() {
   var Visualizer = function(context, canvas) {
     this.ctx = context;
     this.canvas = canvas;
+    this.stopped = true;
     this.setDefault();
   };
 
@@ -30,9 +31,11 @@ $(function() {
   };
 
   Visualizer.prototype.start = function() {
-    this.stopped = false; // Окончание остановки, все капы опустились до нулевого значения
     this.stopping = false; // Начало остановки
-    requestAnimationFrame(this.drawMeter);
+    if (this.stopped) { // Уже произошла окончательная остановка
+      this.stopped = false; // Окончание остановки, все капы опустились до нулевого значения
+      requestAnimationFrame(this.drawMeter);
+    }
   };
 
   Visualizer.prototype.stop = function() {
@@ -67,7 +70,7 @@ $(function() {
 
       var last = array.length; // Последнее не нулевое значение. Чтобы показывать только значащие данные
       while (array[--last] === 0 && last > 0);
-      if (last !== 0) { // Если все значения нулевые, то не рисуем ничего
+      if (last !== 0 && !_this.stopping) { // Если все значения нулевые, то не рисуем ничего
         if (_this.lastMaxHz > last) { // Корректируем количество значащих частот
           last = Math.max(Math.floor(0.9 * _this.lastMaxHz + 0.1 * last), _this.defaultHz);
         }

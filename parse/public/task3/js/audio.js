@@ -95,6 +95,9 @@ var Audio = {
   start: function() {
     var _this = this;
     if (this.buffer) {
+      if (this.source) {
+        this.source.onended = function() {};
+      }
       this.stop();
       this.source = this.audioContext.createBufferSource();
       this.source.connect(this.connector);
@@ -118,6 +121,7 @@ var Audio = {
     if (this.source) {
       this.source.stop(0);
       delete this.source;
+      this.viz.spectrum.stop();
     }
   },
 
